@@ -1,0 +1,14 @@
+server:
+  port: 7000
+
+spring:
+  datasource:
+    username: root
+    password: easypw123
+    url: jdbc:mysql:// 35.222.235.157:3306/ Project2_RecipeAPI
+
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: false
