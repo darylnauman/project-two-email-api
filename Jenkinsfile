@@ -13,6 +13,17 @@ pipeline {
                 junit skipPublishingChecks: true, testResults: 'target/surefire-reports/*.xml'
             }
         }
+    stage('Build') {
+        when {
+            //branch 'main'
+             branch 'ft_jenkins'
+        }
+        steps{
+            withMaven {
+                sh 'mvn package -DskipTests'
+            }
+        }
+    }
 
   }
 }
