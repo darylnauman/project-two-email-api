@@ -1,11 +1,18 @@
 pipeline {
   agent any
   stages {
-    stage('test') {
-      steps {
-        sh 'echo "Hello, World from email-api"'
-      }
-    }
+    stage('Unit Testing') {
+            when {
+                anyOf {branch 'ft_*'; branch 'bg_*'; branch 'ft_jenkins'}
+                // branch 'ft_jenkins'
+            }
+            steps {
+                withMaven {
+                    sh 'mvn test'
+                }
+                junit skipPublishingChecks: true, testResults: 'target/surefire-reports/*.xml'
+            }
+        }
 
   }
 }
