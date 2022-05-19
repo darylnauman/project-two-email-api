@@ -1,4 +1,9 @@
 pipeline {
+  environment {
+    registry = 'darylnauman/project-two-email-api'
+    dockerHubCreds = 'docker_hub'
+    dockerImage = ''
+  }
   agent any
   stages {
     stage('Unit Testing') {
