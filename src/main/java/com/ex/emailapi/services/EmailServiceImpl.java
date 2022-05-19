@@ -229,7 +229,7 @@ public class EmailServiceImpl implements EmailService{
      * which depends on subscribers preference if he has chosen one or else a random recipe
      */
     @Override
-    @Scheduled(fixedRate = 360000)//This will send daily emails after every six minutes
+    @Scheduled(fixedRate = 1000000)//This will send daily emails after every six minutes
     public void dailyEmailSender() {
         logger.debug("Daily email sender started");
 
