@@ -20,8 +20,8 @@ pipeline {
         }
     stage('Build') {
         when {
-            //branch 'main'
-            branch 'ft_jenkins'
+            branch 'main'
+            //branch 'ft_jenkins'
         }
         steps{
             withMaven {
@@ -31,8 +31,8 @@ pipeline {
     }
     stage('Docker Image') {
             when {
-                //branch 'main'
-                branch 'ft_jenkins'
+                branch 'main'
+                //branch 'ft_jenkins'
             }
             steps{
                 script {
@@ -43,8 +43,8 @@ pipeline {
         }
     stage('Docker Deliver') {
             when {
-                //branch 'main'
-                branch 'ft_jenkins'
+                branch 'main'
+                //branch 'ft_jenkins'
             }
             steps{
                 script{
@@ -57,8 +57,8 @@ pipeline {
         }
     stage('Wait for approval') {
             when {
-                //branch 'main'
-                branch 'ft_jenkins'
+                branch 'main'
+                //branch 'ft_jenkins'
             }
             steps {
                 script {
@@ -79,8 +79,8 @@ pipeline {
         }
     stage('Deploy') {
             when {
-                //branch 'main'
-                branch 'ft_jenkins'
+                branch 'main'
+                //branch 'ft_jenkins'
             }
             steps {
             sh 'sed -i "s/%TAG%/$BUILD_NUMBER/g" ./k8s/email-api.deployment.yaml'
