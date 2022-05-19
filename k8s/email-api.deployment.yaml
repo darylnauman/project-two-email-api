@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-api
+  labels:
+    app: email-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: email-api
+  template:
+    metadata:
+      labels:
+        app: email-api
+    spec:
+      containers:
+        - name: email-api-server
+          imagePullPolicy: Always
+          image: darylnauman/project-two-email-api:%TAG%
+          ports:
+            - containerPort: 7000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: email-api-service
+spec:
+  selector:
+    app: email-api
+  type: LoadBalancer
+  ports:
+    - port: 70
+      targetPort: 7000
