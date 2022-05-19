@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Unit Testing') {
             when {
-                anyOf {branch 'ft_*'; branch 'bg_*'; branch 'ft_jenkins'}
+                anyOf {branch 'ft_*'; branch 'bg_*'}
                 // branch 'ft_jenkins'
             }
             steps {
@@ -16,7 +16,7 @@ pipeline {
     stage('Build') {
         when {
             //branch 'main'
-             branch 'ft_jenkins'
+            branch 'ft_jenkins'
         }
         steps{
             withMaven {
@@ -24,6 +24,18 @@ pipeline {
             }
         }
     }
+    stage('Docker Image') {
+            when {
+                //branch 'main'
+                branch 'ft_jenkins'
+            }
+            steps{
+                script {
+                    echo "$registry:$currentBuild.number"
+                    dockerImage = docker.build "$registry:$currentBuild.number"
+                }
+            }
+        }
 
   }
 }
