@@ -109,7 +109,7 @@ public class EmailServiceImpl implements EmailService{
 
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("AneeshRevatureProject1@gmail.com", "RevatureBank2022");
+                return new PasswordAuthentication("AneeshRevatureProject1@gmail.com", "19may2022");
             }
         });
         Message msg = new MimeMessage(session);
