@@ -15,7 +15,7 @@ spec:
         app: email-api
     spec:
       containers:
-        - name: email-api-server
+        - name: email-api
           imagePullPolicy: Always
           image: darylnauman/project-two-email-api:%TAG%
           ports:
@@ -26,9 +26,14 @@ kind: Service
 metadata:
   name: email-api-service
 spec:
+  ports:
+    - port: 7000
+      protocol: TCP
+      name: email
   selector:
     app: email-api
-  type: LoadBalancer
-  ports:
-    - port: 70
-      targetPort: 7000
+  type: ClusterIP
+  #type: LoadBalancer
+  #ports:
+   # - port: 70
+    #  targetPort: 7000
